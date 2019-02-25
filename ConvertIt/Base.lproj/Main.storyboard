@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yeR-H5-pSm">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="yeR-H5-pSm">
                                 <rect key="frame" x="76" y="85" width="207" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="qud-eW-Qg6"/>
@@ -26,6 +26,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="userInputChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="bxn-ZW-0hz"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Trc-fi-pjo">
                                 <rect key="frame" x="291" y="85" width="103" height="24"/>
@@ -57,7 +60,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0V0-fX-X5c">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0V0-fX-X5c">
                                 <rect key="frame" x="36" y="85" width="32" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="6kF-F2-q5f"/>
@@ -68,6 +71,9 @@
                                     <segment title="-"/>
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="signSegmentSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="vSN-Cr-f6i"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucb-nD-Kpg">
                                 <rect key="frame" x="107" y="562" width="200" height="30"/>
@@ -83,8 +89,8 @@
                                     <action selector="convertButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mug-yz-WXg"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k4X-wg-Mrd">
-                                <rect key="frame" x="54" y="528" width="288" height="28"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4X-wg-Mrd">
+                                <rect key="frame" x="63" y="528" width="288" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rounding: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9m-bQ-PjS">
                                         <rect key="frame" x="0.0" y="0.0" width="82" height="28"/>
@@ -120,6 +126,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fio-YX-e76" secondAttribute="trailing" constant="16" id="0K5-p9-aUs"/>
                             <constraint firstItem="Zkd-hh-hSu" firstAttribute="top" secondItem="Fio-YX-e76" secondAttribute="bottom" constant="27" id="7Du-cU-27Z"/>
+                            <constraint firstItem="k4X-wg-Mrd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CUZ-ry-zzi"/>
                             <constraint firstItem="Trc-fi-pjo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="41" id="K9j-D2-oO5"/>
                             <constraint firstItem="yeR-H5-pSm" firstAttribute="leading" secondItem="0V0-fX-X5c" secondAttribute="trailing" constant="8" id="LeQ-df-5Bb"/>
                             <constraint firstItem="k4X-wg-Mrd" firstAttribute="top" secondItem="NHO-ft-10I" secondAttribute="bottom" constant="20" id="N7S-IT-GYp"/>
@@ -146,6 +153,7 @@
                         <outlet property="formulaPicker" destination="NHO-ft-10I" id="9aZ-t3-Z9o"/>
                         <outlet property="fromUnitsLabel" destination="Trc-fi-pjo" id="5Fz-ni-UnW"/>
                         <outlet property="resultsLabel" destination="Fio-YX-e76" id="fWB-8a-AF3"/>
+                        <outlet property="signSegment" destination="0V0-fX-X5c" id="3in-dt-MWS"/>
                         <outlet property="userInput" destination="yeR-H5-pSm" id="rel-Pl-fFs"/>
                     </connections>
                 </viewController>
